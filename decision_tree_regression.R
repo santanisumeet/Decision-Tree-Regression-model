@@ -2,19 +2,23 @@
 
 # Importing the dataset
 dataset = read.csv('Position_Salaries.csv')
-dataset = dataset[2:3]
+dataset = dataset[2:3] #cleaning out irrelevant columns from the data set
 
 # Splitting the dataset into the Training set and Test set
-# # install.packages('caTools')
-# library(caTools)
-# set.seed(123)
-# split = sample.split(dataset$Salary, SplitRatio = 2/3)
-# training_set = subset(dataset, split == TRUE)
-# test_set = subset(dataset, split == FALSE)
+install.packages('caTools')
+library(caTools)
+set.seed(123)
+split = sample.split(dataset$Salary, SplitRatio = 2/3)
+training_set = subset(dataset, split == TRUE)
+test_set = subset(dataset, split == FALSE)
+
 
 # Feature Scaling
-# training_set = scale(training_set)
-# test_set = scale(test_set)
+training_set = scale(training_set)
+test_set = scale(test_set)
+
+View(training_set) #View the training data set
+View(test_set) #View the test data set
 
 # Fitting Decision Tree Regression to the dataset
 # install.packages('rpart')
